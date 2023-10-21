@@ -1,3 +1,289 @@
 --[[ teleport.lua script by norb_ ]]--
 
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v28,v29)local v30={};for v69=1, #v28 do v6(v30,v0(v4(v1(v2(v28,v69,v69 + 1 )),v1(v2(v29,1 + (v69% #v29) ,1 + (v69% #v29) + 1 )))%256 ));end return v5(v30);end local v8=game:GetService(v7("\227\198\203\41\239\184\198\10\212\199\232\49\233\169\198\25\212","\126\177\163\187\69\134\219\167"));local v9=game:GetService(v7("\19\204\62\205\250\42\195\46\204\242\36\254\47\215\234\42\206\47","\156\67\173\74\165"));local v10=game:GetService(v7("\4\187\72\15\185\52\85","\38\84\215\41\118\220\70"));local v11=v10.LocalPlayer;local v12={[v7("\70\23\48\27\255\82\26\39\1","\158\48\118\66\114")]={[v7("\190\52\47\32\118\166\239\164\54","\155\203\68\112\86\19\197")]=Vector3.new(0 -0 ,351 + 149 ,0 + 0 ),[v7("\84\220\47\255\65\107\241\199\86\220\36\253\77\107","\152\38\189\86\156\32\24\133")]=RaycastParams.new(),[v7("\236\86\179\78","\38\156\55\199")]=v9:CreatePath({[v7("\159\124\101\56\28\125\244\87\155\109\125\43\26\122\253","\35\200\29\28\72\115\20\154")]=1 -0 }),[v7("\9\179\208\198\136\62\11\10\175\212\218\137","\84\121\223\177\191\237\76")]=252 -102 ,[v7("\173\83\193\169\57\92\53\254\168\70\204\165\62","\161\219\54\169\192\90\48\80")]=36 + 414 ,[v7("\93\71\12\32\89\77\18\49\64\76\7","\69\41\34\96")]=false,[v7("\175\215\216\26\52\46\176\204\212\3\22\50","\75\220\163\183\106\98")]=false},[v7("\15\181\143\34\213\7\169","\185\98\218\235\87")]={[v7("\222\53","\202\171\92\71\134\190")]=require(v8.Module.UI),[v7("\58\213\35\154\44","\232\73\161\76")]=require(v8.App.store),[v7("\171\213\67\68\27\169\230\87\73\23\183\202","\126\219\185\34\61")]=require(v8.Game.PlayerUtils),[v7("\26\203\86\123\125\123\246\216\8\207\74\115","\135\108\174\62\18\30\23\147")]=require(v8.Game.Garage.VehicleData),[v7("\181\225\43\217\25\173\39\194\164\214\63\223\17\162","\167\214\137\74\171\120\206\83")]=require(v8.Game.CharacterUtil),[v7("\155\241\32\92\255\171\130\244\55","\199\235\144\82\61\152")]=require(v8.Game.Paraglide)},[v7("\49\19\177\34\4\26\188\56","\75\103\118\217")]={v7("\228\85\125\21\171\17","\126\167\52\16\116\217"),v7("\226\43\37\144","\156\168\78\64\224\212\121")},[v7("\3\225\170\220\56\254\170\221\14\250\172\193\9\253","\174\103\142\197")]={}};local v13={};local v14={};local function v15(v31,v32)for v70,v71 in next,v31.Model:GetChildren() do if v71:IsA(v7("\116\41\76\61\21\95\234\66","\152\54\72\63\88\69\62")) then v71.CanCollide=v32;end end end local function v16(v33)local v34;local v35=math.huge;for v72,v73 in next,v12.modules.ui.CircleAction.Specs do if (v73.IsVehicle and (v73.ShouldAllowEntry==true) and (v73.Enabled==true) and (v73.Name==v7("\241\202\250\89\198\132\202\78\221\210\235\78","\60\180\164\142"))) then local v85=0;local v86;local v87;while true do if ((1000 -(451 + 549))==v85) then v86=0 + 0 ;v87=nil;v85=1 -0 ;end if (v85==(1 -0)) then while true do if (v86==(1384 -(746 + 638))) then v87=v73.ValidRoot;if ( not table.find(v33,v87) and workspace.VehicleSpawns:FindFirstChild(v87.Name)) then if ( not v12.unsupported_vehicles[v87.Name] and (v12.modules.store._state.garageOwned.Vehicles[v87.Name] or v12.free_vehicles[v87.Name]) and  not v87.Seat.Player.Value) then if  not workspace:Raycast(v87.Seat.Position,v12.variables.up_vector,v12.variables.raycast_params) then local v126=0 + 0 ;local v127;while true do if (v126==0) then v127=(v87.Seat.Position-v11.Character.HumanoidRootPart.Position).Magnitude;if (v127<v35) then local v139=0 -0 ;local v140;while true do if ((341 -(218 + 123))==v139) then v140=1581 -(1535 + 46) ;while true do if (v140==(0 + 0)) then v35=v127;v34=v73;break;end end break;end end end break;end end end end end break;end end break;end end end end return v34;end local function v17(v36,v37)local v38=0 + 0 ;local v39;while true do if (v38==0) then local v88=560 -(306 + 254) ;while true do if (v88==0) then v39=Workspace:Raycast(v36,v37,TeleportParams);return v39~=nil ;end end end end end local function v18(v40)local v41=math.huge;local v42;local v40=v40 or {} ;for v74,v75 in next,v12.door_positions do if  not table.find(v40,v75) then local v89=(v75.position-v11.Character.HumanoidRootPart.Position).Magnitude;if (v89<v41) then v41=v89;v42=v75;end end end table.insert(v40,v42);v15(v42.instance,false);local v43=v12.variables.path;v43:ComputeAsync(v11.Character.HumanoidRootPart.Position,v42.position);if (v43.Status==Enum.PathStatus.Success) then local v76=0 + 0 ;local v77;local v78;while true do if (v76==0) then v77=0;v78=nil;v76=1;end if (v76==1) then while true do if (v77==0) then v78=v43:GetWaypoints();for v112=1 -0 , #v78 do local v113=v78[v112];v11.Character.HumanoidRootPart.CFrame=CFrame.new(v113.Position + Vector3.new(1467 -(899 + 568) ,2.5 + 0 ,0 -0 ) );if  not workspace:Raycast(v11.Character.HumanoidRootPart.Position,v12.variables.up_vector,v12.variables.raycast_params) then local v123=0;while true do if (v123==0) then v15(v42.instance,true);return;end end end task.wait(603.05 -(268 + 335) );end break;end end break;end end end v15(v42.instance,true);v18(v40);end local function v19(v44,v45,v46,v47,v48,v49)local v50=290 -(60 + 230) ;local v51;local v52;local v53;while true do if ((573 -(426 + 146))==v50) then local v90=0 + 0 ;while true do if ((1457 -(282 + 1174))==v90) then v50=813 -(569 + 242) ;break;end if (v90==0) then v52=500;v53=Vector3.new(v51.X,v52,v51.Z);v90=2 -1 ;end end end if (3==v50) then v44.Velocity=Vector3.zero;break;end if (v50==(0 + 0)) then local v93=1024 -(706 + 318) ;while true do if ((1252 -(721 + 530))==v93) then v50=1272 -(945 + 326) ;break;end if (v93==0) then v51=v45.Position;if ( not v47 and workspace:Raycast(v44.Position,v12.variables.up_vector,v12.variables.raycast_params)) then v18();task.wait(0.5 -0 );end v93=1;end end end if (v50==2) then repeat local v101=0 + 0 ;local v102;while true do if (v101==0) then local v107=700 -(271 + 429) ;while true do if (v107==(1 + 0)) then v101=1;break;end if (v107==(1500 -(1408 + 92))) then v102=(v53-v44.Position).Unit * v46 ;v44.Velocity=Vector3.new(v102.X,1086 -(461 + 625) ,v102.Z);v107=1289 -(993 + 295) ;end end end if (v101==(1 + 0)) then task.wait();v44.CFrame=CFrame.new(v44.CFrame.X,v52,v44.CFrame.Z);v101=1173 -(418 + 753) ;end if ((1 + 1)==v101) then if (v48 and v48.Seat.Player.Value) then local v115=0;local v116;local v117;while true do local v119=0 + 0 ;local v120;while true do if (v119==(0 + 0)) then v120=0;while true do if (v120==(1 + 0)) then if (v115==1) then v117=v116 and v116.ValidRoot ;if v117 then v19(v11.Character.HumanoidRootPart,v117.Seat.CFrame,135,false,v117);end v115=531 -(406 + 123) ;end break;end if (v120==0) then if (v115==(1769 -(1749 + 20))) then local v134=0 + 0 ;while true do if (v134==(1322 -(1249 + 73))) then table.insert(v49,v48);v116=v16(v49);v134=1;end if (v134==(1 + 0)) then v115=1146 -(466 + 679) ;break;end end end if (v115==2) then return;end v120=2 -1 ;end end break;end end end end break;end end until (v44.Position-v53).Magnitude<10  v44.CFrame=CFrame.new(v44.Position.X,v51.Y,v44.Position.Z);v50=8 -5 ;end end end v12.variables.raycast_params.FilterType=Enum.RaycastFilterType.Blacklist;v12.variables.raycast_params.FilterDescendantsInstances={v11.Character,workspace.Vehicles,workspace:FindFirstChild(v7("\106\95\12\39","\114\56\62\101\73\71\141"))};workspace.ChildAdded:Connect(function(v54)if (v54.Name==v7("\138\232\210\202","\164\216\137\187")) then table.insert(v12.variables.raycast_params.FilterDescendantsInstances,v54);end end);v11.CharacterAdded:Connect(function(v55)table.insert(v12.variables.raycast_params.FilterDescendantsInstances,v55);end);for v56,v57 in next,v12.modules.vehicle_data do if  not v57.Price then v12.Vehicles[v57.Make]=true;end end for v58,v59 in pairs(Workspace:GetDescendants()) do if (v59.Name:sub( -4, -(2 -1))==v7("\246\233\62\160","\107\178\134\81\210\198\158")) then local v80=0 -0 ;local v81;local v82;local v83;while true do if ((114 -(4 + 110))==v80) then v81=584 -(57 + 527) ;v82=nil;v80=1428 -(41 + 1386) ;end if (v80==(104 -(17 + 86))) then v83=nil;while true do if (v81==(1 + 0)) then while true do if (0==v82) then v83=v59:FindFirstChild(v7("\12\1\151\197\162","\202\88\110\226\166"));if (v83 and v83:IsA(v7("\225\14\145\242\250\194\29\150","\170\163\111\226\151"))) then local v125=0 -0 ;while true do if (v125==0) then for v128,v129 in pairs(v59:GetDescendants()) do pcall(function()v129.CanCollide=false;end);end for v130=20 -13 ,266 -(122 + 44) ,11 -4  do local v131=v83.Position + (v83.CFrame.LookVector * (v130 + 20)) ;local v132=v83.Position + (v83.CFrame.LookVector *  -(v130 + (66 -46))) ;if  not v17(v131,Vector3.new(0 + 0 ,145 + 855 ,0 -0 )) then table.insert(DoorPositions,v131);break;elseif  not v17(v132,Vector3.new(0,1065 -(30 + 35) ,0 + 0 )) then table.insert(DoorPositions,v132);break;end end break;end end end break;end end break;end if (v81==(1257 -(1043 + 214))) then v82=0 -0 ;v83=nil;v81=1;end end break;end end end end local v23=v12.modules.player_utils.isPointInTag;v12.modules.player_utils.isPointInTag=function(v60,v61)if ((v12.variables.teleporting and (v61==v7("\63\63\128\57\73\51\38\29\60","\73\113\80\210\88\46\87"))) or (v61==v7("\175\35\235\19\235\141\8\204\31\230\134\41","\135\225\76\173\114"))) then return true;end return v23(v60,v61);end;local v25=v12.modules.paraglide.IsFlying;v12.modules.paraglide.IsFlying=function(...)if (v12.variables.teleporting and getinfo(2,"s").source:find(v7("\60\236\180\188\165\179\160","\199\122\141\216\208\204\221"))) then return true;end return v25(...);end;task.spawn(function()while task.wait() do if (v12.variables.stopVelocity and v11.Character and v11.Character:FindFirstChild(v7("\133\200\29\241\118\249\164\217\34\255\119\226\157\220\2\228","\150\205\189\112\144\24"))) then v11.Character.HumanoidRootPart.Velocity=Vector3.zero;end end end);local function v27(v62,v63)local v64=1212 -(323 + 889) ;local v65;local v66;local v63;local v67;local v68;while true do if (v64==3) then v12.variables.teleporting=true;if v68 then local v103=0;local v104;while true do if (v103==(0 -0)) then v104=(v68.Seat.Position-v11.Character.HumanoidRootPart.Position).Magnitude;if (v66<v104) then v19(v11.Character.HumanoidRootPart,v62,v12.variables.player_speed);else local v121=0;local v122;while true do if (v121==(580 -(361 + 219))) then v122=0;while true do if (v122==(320 -(53 + 267))) then if (v68.Seat.PlayerName.Value~=v11.Name) then local v136=0 + 0 ;local v137;local v138;while true do if (v136==(414 -(15 + 398))) then while true do if (v137==(982 -(18 + 964))) then v19(v11.Character.HumanoidRootPart,v68.Seat.CFrame,v12.variables.player_speed,false,v68,v63);v12.variables.stopVelocity=true;v137=3 -2 ;end if (v137==1) then local v142=0;while true do if (v142==(0 + 0)) then v138=1 + 0 ;repeat local v146=850 -(20 + 830) ;while true do if (v146==1) then task.wait(0.1 + 0 );break;end if (v146==(126 -(116 + 10))) then v67:Callback(true);v138=v138 + 1 + 0 ;v146=739 -(542 + 196) ;end end until (v138==(21 -11)) or (v68.Seat.PlayerName.Value==v11.Name)  v142=1;end if (v142==(1 + 0)) then v137=2;break;end end end if ((2 + 0)==v137) then v12.variables.stopVelocity=false;if (v68.Seat.PlayerName.Value~=v11.Name) then local v144=0 + 0 ;local v145;while true do if (v144==(0 -0)) then v145=0;while true do if (v145==(0 -0)) then table.insert(v63,v68);return v27(v62,v63 or {v68} );end end break;end end end break;end end break;end if (0==v136) then v137=405 -(118 + 287) ;v138=nil;v136=1;end end end v19(v68.Engine,v62,v12.variables.vehicle_speed,true);v122=3 -2 ;end if ((1122 -(118 + 1003))==v122) then repeat task.wait(0.15);v12.modules.character_util.OnJump();until v68.Seat.PlayerName.Value~=v11.Name  break;end end break;end end end break;end end else v19(v11.Character.HumanoidRootPart,v62,v12.variables.player_speed);end v64=4;end if ((2 -1)==v64) then local v98=377 -(142 + 235) ;while true do if ((4 -3)==v98) then v64=1 + 1 ;break;end if (v98==(977 -(553 + 424))) then if ((v66<=20) and  not workspace:Raycast(v11.Character.HumanoidRootPart.Position,v65.Unit * v66 ,v12.variables.raycast_params)) then local v110=0;while true do if (v110==0) then v11.Character.HumanoidRootPart.CFrame=v62;return;end end end v63=v63 or {} ;v98=1 -0 ;end end end if (v64==2) then v67=v16(v63);v68=v67 and v67.ValidRoot ;v64=3 + 0 ;end if ((0 + 0)==v64) then local v99=0 + 0 ;while true do if (v99==(1 + 0)) then v64=1 + 0 ;break;end if (v99==(0 -0)) then v65=v62.Position-v11.Character.HumanoidRootPart.Position ;v66=v65.Magnitude;v99=2 -1 ;end end end if (v64==4) then task.wait(0.5 -0 );v12.variables.teleporting=false;break;end end end return v27;
+local ReplicatedStorage = game:GetService("ReplicatedStorage");
+local PathfindingService = game:GetService("PathfindingService");
+local Players = game:GetService("Players");
+
+local player = Players.LocalPlayer;
+
+local dependencies = {
+    variables = {
+        up_vector = Vector3.new(0, 500, 0),
+        raycast_params = RaycastParams.new(),
+        path = PathfindingService:CreatePath({ WaypointSpacing = 2 }),
+        player_speed = 150,
+        vehicle_speed = 450,
+        teleporting = false,
+        stopVelocity = false
+    },
+    modules = {
+        ui = require(ReplicatedStorage.Module.UI),
+        store = require(ReplicatedStorage.App.store),
+        player_utils = require(ReplicatedStorage.Game.PlayerUtils),
+        vehicle_data = require(ReplicatedStorage.Game.Garage.VehicleData),
+        character_util = require(ReplicatedStorage.Game.CharacterUtil),
+        paraglide = require(ReplicatedStorage.Game.Paraglide)
+    },
+    Vehicles = {"Camaro", "Jeep"},
+    door_positions = { }    
+};
+
+local movement = { };
+local utilities = { };
+
+local function antiCollision(door, toggle)
+    for index, child in next, door.Model:GetChildren() do 
+        if child:IsA("BasePart") then 
+            child.CanCollide = toggle;
+        end; 
+    end;
+end;
+
+local function getVehicle(tried)
+    local nearest;
+    local distance = math.huge;
+
+    for index, action in next, dependencies.modules.ui.CircleAction.Specs do 
+        if action.IsVehicle and action.ShouldAllowEntry == true and action.Enabled == true and action.Name == "Enter Driver" then
+            local vehicle = action.ValidRoot;
+
+            if not table.find(tried, vehicle) and workspace.VehicleSpawns:FindFirstChild(vehicle.Name) then
+                if not dependencies.unsupported_vehicles[vehicle.Name] and (dependencies.modules.store._state.garageOwned.Vehicles[vehicle.Name] or dependencies.free_vehicles[vehicle.Name]) and not vehicle.Seat.Player.Value then
+                    if not workspace:Raycast(vehicle.Seat.Position, dependencies.variables.up_vector, dependencies.variables.raycast_params) then
+                        local magnitude = (vehicle.Seat.Position - player.Character.HumanoidRootPart.Position).Magnitude; 
+
+                        if magnitude < distance then 
+                            distance = magnitude;
+                            nearest = action;
+                        end;
+                    end;
+                end;
+            end;
+        end;
+    end;
+
+    return nearest;
+end;
+
+local function CheckRaycast(Position, Vector)
+    local Raycasted = Workspace:Raycast(Position, Vector, TeleportParams)
+
+    return Raycasted ~= nil
+end
+
+local function startPathfind(tried)
+    local distance = math.huge;
+    local nearest;
+
+    local tried = tried or { };
+    
+    for index, value in next, dependencies.door_positions do
+        if not table.find(tried, value) then
+            local magnitude = (value.position - player.Character.HumanoidRootPart.Position).Magnitude;
+            
+            if magnitude < distance then 
+                distance = magnitude;
+                nearest = value;
+            end;
+        end;
+    end;
+
+    table.insert(tried, nearest);
+
+    antiCollision(nearest.instance, false);
+
+    local path = dependencies.variables.path;
+    path:ComputeAsync(player.Character.HumanoidRootPart.Position, nearest.position);
+
+    if path.Status == Enum.PathStatus.Success then 
+        local waypoints = path:GetWaypoints();
+
+        for index = 1, #waypoints do 
+            local waypoint = waypoints[index];
+            
+            player.Character.HumanoidRootPart.CFrame = CFrame.new(waypoint.Position + Vector3.new(0, 2.5, 0))
+
+            if not workspace:Raycast(player.Character.HumanoidRootPart.Position, dependencies.variables.up_vector, dependencies.variables.raycast_params) then
+                antiCollision(nearest.instance, true);
+
+                return;
+            end;
+
+            task.wait(0.05);
+        end;
+    end;
+
+    antiCollision(nearest.instance, true);
+
+    startPathfind(tried);
+end;
+
+local function enterVehicle(part, cframe, speed, car, target_vehicle, tried_vehicles)
+    local vector_position = cframe.Position;
+    
+    if not car and workspace:Raycast(part.Position, dependencies.variables.up_vector, dependencies.variables.raycast_params) then
+        startPathfind();
+        task.wait(0.5);
+    end;
+    
+    local y_level = 500;
+    local higher_position = Vector3.new(vector_position.X, y_level, vector_position.Z);
+
+    repeat
+        local velocity_unit = (higher_position - part.Position).Unit * speed;
+        part.Velocity = Vector3.new(velocity_unit.X, 0, velocity_unit.Z);
+
+        task.wait();
+
+        part.CFrame = CFrame.new(part.CFrame.X, y_level, part.CFrame.Z);
+
+        if target_vehicle and target_vehicle.Seat.Player.Value then
+            table.insert(tried_vehicles, target_vehicle);
+
+            local nearest_vehicle = getVehicle(tried_vehicles);
+            local vehicle_object = nearest_vehicle and nearest_vehicle.ValidRoot;
+
+            if vehicle_object then 
+                enterVehicle(player.Character.HumanoidRootPart, vehicle_object.Seat.CFrame, 135, false, vehicle_object);
+            end;
+
+            return;
+        end;
+    until (part.Position - higher_position).Magnitude < 10;
+
+    part.CFrame = CFrame.new(part.Position.X, vector_position.Y, part.Position.Z);
+    part.Velocity = Vector3.zero;
+end;
+
+dependencies.variables.raycast_params.FilterType = Enum.RaycastFilterType.Blacklist;
+dependencies.variables.raycast_params.FilterDescendantsInstances = { player.Character, workspace.Vehicles, workspace:FindFirstChild("Rain") };
+
+workspace.ChildAdded:Connect(function(child)
+    if child.Name == "Rain" then 
+        table.insert(dependencies.variables.raycast_params.FilterDescendantsInstances, child);
+    end;
+end);
+
+player.CharacterAdded:Connect(function(character)
+    table.insert(dependencies.variables.raycast_params.FilterDescendantsInstances, character);
+end);
+
+for index, vehicle_data in next, dependencies.modules.vehicle_data do
+    if not vehicle_data.Price then
+        dependencies.Vehicles[vehicle_data.Make] = true;
+    end;
+end;
+
+for _, Door in pairs(Workspace:GetDescendants()) do
+    if Door.Name:sub(-4, -1) == "Door" then
+        local DoorTouch = Door:FindFirstChild("Touch")
+            
+        if DoorTouch and DoorTouch:IsA("BasePart") then
+            for _, instance in pairs(Door:GetDescendants()) do
+                pcall(function()
+                    instance.CanCollide = false
+                end)
+            end
+
+            for Distance = 7, 100, 7 do
+                local DoorForward = DoorTouch.Position + DoorTouch.CFrame.LookVector * (Distance + 20)
+                local DoorBackward = DoorTouch.Position + DoorTouch.CFrame.LookVector * -(Distance + 20)
+
+                if not CheckRaycast(DoorForward, Vector3.new(0, 1000, 0)) then
+                    table.insert(DoorPositions, DoorForward)
+                    break
+                elseif not CheckRaycast(DoorBackward, Vector3.new(0, 1000, 0)) then
+                    table.insert(DoorPositions, DoorBackward)
+                    break
+                end
+            end
+        end
+    end
+end
+local old_is_point_in_tag = dependencies.modules.player_utils.isPointInTag;
+dependencies.modules.player_utils.isPointInTag = function(point, tag)
+    if dependencies.variables.teleporting and tag == "NoRagdoll" or tag == "NoFallDamage" then
+        return true;
+    end;
+    
+    return old_is_point_in_tag(point, tag);
+end;
+local oldIsFlying = dependencies.modules.paraglide.IsFlying
+dependencies.modules.paraglide.IsFlying = function(...)
+    if dependencies.variables.teleporting and getinfo(2, "s").source:find("Falling") then
+        return true
+    end
+    
+    return oldIsFlying(...)
+end
+
+task.spawn(function()
+    while task.wait() do
+        if dependencies.variables.stopVelocity and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            player.Character.HumanoidRootPart.Velocity = Vector3.zero;
+        end;
+    end;
+end);
+
+local function teleport(cframe, tried)
+    local relative_position = (cframe.Position - player.Character.HumanoidRootPart.Position);
+    local target_distance = relative_position.Magnitude;
+
+    if target_distance <= 20 and not workspace:Raycast(player.Character.HumanoidRootPart.Position, relative_position.Unit * target_distance, dependencies.variables.raycast_params) then 
+        player.Character.HumanoidRootPart.CFrame = cframe; 
+        
+        return;
+    end; 
+
+    local tried = tried or { };
+    local nearest_vehicle = getVehicle(tried);
+    local vehicle_object = nearest_vehicle and nearest_vehicle.ValidRoot;
+
+    dependencies.variables.teleporting = true;
+
+    if vehicle_object then 
+        local vehicle_distance = (vehicle_object.Seat.Position - player.Character.HumanoidRootPart.Position).Magnitude;
+
+        if target_distance < vehicle_distance then
+            enterVehicle(player.Character.HumanoidRootPart, cframe, dependencies.variables.player_speed);
+        else 
+            if vehicle_object.Seat.PlayerName.Value ~= player.Name then
+                enterVehicle(player.Character.HumanoidRootPart, vehicle_object.Seat.CFrame, dependencies.variables.player_speed, false, vehicle_object, tried);
+
+                dependencies.variables.stopVelocity = true;
+
+                local enter_attempts = 1;
+
+                repeat
+                    nearest_vehicle:Callback(true)
+                    
+                    enter_attempts = enter_attempts + 1;
+
+                    task.wait(0.1);
+                until enter_attempts == 10 or vehicle_object.Seat.PlayerName.Value == player.Name;
+
+                dependencies.variables.stopVelocity = false;
+
+                if vehicle_object.Seat.PlayerName.Value ~= player.Name then
+                    table.insert(tried, vehicle_object);
+
+                    return teleport(cframe, tried or { vehicle_object });
+                end;
+            end;
+
+            enterVehicle(vehicle_object.Engine, cframe, dependencies.variables.vehicle_speed, true);
+
+            repeat
+                task.wait(0.15);
+                dependencies.modules.character_util.OnJump();
+            until vehicle_object.Seat.PlayerName.Value ~= player.Name;
+        end;
+    else
+        enterVehicle(player.Character.HumanoidRootPart, cframe, dependencies.variables.player_speed);
+    end;
+
+    task.wait(0.5);
+    dependencies.variables.teleporting = false;
+end;
+
+return teleport;
