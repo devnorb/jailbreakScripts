@@ -10,6 +10,4 @@ Jailbreak Universal loader script by norb_
 Deobfuscation attempts will result in a HWID script ban 
 ]]--
 
--- print(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
-
 loadstring(game:HttpGet("https://cdn.discordapp.com/attachments/1167250916123082752/1167888669605118054/legacy.lua"))()
